@@ -1,25 +1,81 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Home from '../views/Home.vue'
 
 const routes = [
+  
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: () => import('../views/Pages/home.vue'),
+    meta: {
+      title:'Ana Sayfa'
+    }
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
+    path: '/blog',
+    name: 'Blog',
+    component: () => import('../views/Pages/blog.vue'),
+    meta: {
+      title:'Blog'
+    }
+  },
+   {
+    path: '/galeri',
+    name: 'Galeri',
+    component: () => import('../views/Pages/galeri.vue'),
+    meta: {
+      title:'Galeri'
+    }
+  },
+
+     {
+    path: '/iletisim',
+    name: 'iletisim',
+    component: () => import('../views/Pages/iletisim.vue'),
+    meta: {
+      title:'İletisim'
+    }
+  },
+    {
+    path: '/turnuva-detaylari/:id',
+    name: 'turnuvalarDetay',
+    component: () => import('../views/Pages/turnuvalar_detay.vue'),
+    meta: {
+      title:'Turnuva Detayları'
+    }
+  },
+    {
+    path: '/turnuvalar/:id',
+    name: 'turnuvalar',
+    component: () => import('../views/Pages/turnuvalar.vue'),
+    meta: {
+      title:'Turnuvalar'
+    }
+  },
+    {
+    path: '/maclar/:id',
+    name: 'maclar',
+    component: () => import('../views/Pages/mac_detay.vue'),
+    meta: {
+      title:'Maçlar'
+    }
+  },
+    
+     {
+    path: '/sahalar',
+    name: 'sahalar',
+    component: () => import('../views/Pages/sahalar.vue'),
+    meta: {
+      title:'Halı Sahalar'
+    }
+  },
 ]
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
 })
-
+router.beforeEach((to, from, next) => {
+  document.title = to.meta.title;
+  next();
+});
 export default router
