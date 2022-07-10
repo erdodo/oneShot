@@ -5,13 +5,11 @@
         <span class="tg-copyright">&copy; {{ date }} | Tüm hakları saklıdır.</span>
         <nav class="tg-footernav">
           <ul>
-            <li><a href="#">Main</a></li>
-            <li><a href="#">Team</a></li>
-            <li><a href="#">Buy Tickets</a></li>
-            <li><a href="#">Match Results</a></li>
-            <li><a href="#">Upcoming Matches</a></li>
-            <li><a href="#">Shop</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><router-link to="/">Ana Sayfa</router-link></li>
+            <li><router-link to="/sahalar">Sahalar</router-link></li>
+            <li><router-link to="/iletisim">İletişim</router-link></li>
+            <li><router-link to="/blog">Blog</router-link></li>
+            <li><router-link to="/galeri">Galeri</router-link></li>
           </ul>
         </nav>
       </div>

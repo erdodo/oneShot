@@ -57,7 +57,7 @@
               >
                 <router-link
                   :to="'/saha-detay/' + s.id"
-                  v-for="s in sahalar"
+                  v-for="s in sahalar.records"
                   :key="s"
                   class="masonry-grid"
                 >
@@ -78,6 +78,24 @@
                   </div>
                 </router-link>
               </div>
+              <ul class="tg-pagination">
+                <li class="tg-prevpage">
+                  <a class="cursor-pointer" @click="oncekiSayfa()">
+                    <i class="fa fa-angle-left"></i>
+                  </a>
+                </li>
+                <li class="active">
+                  <a> {{ this.params.page }} </a>
+                </li>
+                <li>
+                  <a href="#"> {{ sahalar.pages }} </a>
+                </li>
+                <li class="tg-nextpage">
+                  <a class="cursor-pointer" @click="sonrakiSayfa()">
+                    <i class="fa fa-angle-right"></i>
+                  </a>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
@@ -100,8 +118,15 @@ export default {
       baseUrl: process.env.BASE_URL,
       sahai: "",
       sahab: 0,
-      filters: {},
       sahalar: [],
+      params: {
+        page: 1,
+        limit: "10",
+        column_array_id: "0",
+        column_array_id_query: "0",
+        sorts: {},
+        filters: {},
+      },
     };
   },
   mounted() {
@@ -112,17 +137,10 @@ export default {
     getSahalar() {
       axios
         .post("public/tables/sahalar", {
-          params: JSON.stringify({
-            page: 1,
-            limit: "10",
-            column_array_id: "0",
-            column_array_id_query: "0",
-            sorts: {},
-            filters: this.filters,
-          }),
+          params: JSON.stringify(this.params),
         })
         .then((res) => {
-          this.sahalar = res.data.data.records;
+          this.sahalar = res.data.data;
         });
     },
     getSahaBolge() {
@@ -135,9 +153,21 @@ export default {
           this.sahaBolge = res.data.results;
         });
     },
+    oncekiSayfa() {
+      if (this.params.page > 1) {
+        this.params.page--;
+        this.getSahalar();
+      }
+    },
+    sonrakiSayfa() {
+      if (this.params.page < this.sahalar.pages) {
+        this.params.page++;
+        this.getSahalar();
+      }
+    },
     filtrele() {
       if (this.sahai != "" && this.sahab > 0) {
-        this.filters = {
+        this.params.filters = {
           saha_name_basic: {
             type: 1,
             guiType: "string",
@@ -150,7 +180,7 @@ export default {
           },
         };
       } else if (this.sahai != "") {
-        this.filters = {
+        this.params.filters = {
           saha_name_basic: {
             type: 1,
             guiType: "string",
@@ -158,7 +188,7 @@ export default {
           },
         };
       } else if (this.sahab > 0) {
-        this.filters = {
+        this.params.filters = {
           department_id_turnuva: {
             type: 1,
             guiType: "multiselect",
@@ -166,7 +196,7 @@ export default {
           },
         };
       } else {
-        this.filters = {};
+        this.params.filters = {};
       }
       this.getSahalar();
     },
