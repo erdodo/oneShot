@@ -4,7 +4,7 @@
       <div class="container">
         <div class="">
           <div class="row">
-            <div class="tg-colhalf pull-right">
+            <!--div class="tg-colhalf pull-right">
               <nav class="tg-addnav">
                 <ul>
                   <li>
@@ -19,32 +19,32 @@
                   </li>
                 </ul>
               </nav>
-            </div>
+            </!--div-->
             <div class="tg-colhalf">
               <ul class="tg-socialicons">
                 <li>
-                  <a href="#">
+                  <a :href="ilt.facebook">
                     <i class="fa fa-facebook"></i>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <a :href="ilt.twitter">
                     <i class="fa fa-twitter"></i>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
-                    <i class="fa fa-linkedin"></i>
+                  <a :href="ilt.instagram">
+                    <i class="fa fa-instagram"></i>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
-                    <i class="fa fa-google-plus"></i>
+                  <a :href="'mailto:' + ilt.email_basic">
+                    <i class="fa fa-envelope-o"></i>
                   </a>
                 </li>
                 <li>
-                  <a href="#">
-                    <i class="fa fa-dribbble"></i>
+                  <a :href="'tel:' + ilt.phone">
+                    <i class="fa fa-phone"></i>
                   </a>
                 </li>
               </ul>
@@ -158,12 +158,12 @@
         <div class="mobile-link" @click="mobileMenu = false">
           <router-link to="/galeri">Galeri</router-link>
         </div>
-        <div class="mobile-link" @click="mobileMenu = false">
+        <!--div class="mobile-link" @click="mobileMenu = false">
           <a href="javascript()" data-toggle="modal" data-target="#tg-login">Giriş</a>
-        </div>
-        <div class="mobile-link" @click="mobileMenu = false">
+        </!--div>
+        <div-- class="mobile-link" @click="mobileMenu = false">
           <a href="javascript()" data-toggle="modal" data-target="#tg-register">Üye Ol</a>
-        </div>
+        </div-->
       </div>
     </div>
   </div>
@@ -177,6 +177,7 @@ export default {
       baseUrl: process.env.BASE_URL,
       turnuva_kategorileri: [],
       mobileMenu: false,
+      ilt: {},
     };
   },
   created() {
@@ -203,6 +204,15 @@ export default {
         })
         .then((res) => {
           this.turnuva_kategorileri = res.data.data.records;
+        });
+    },
+    getIletisim() {
+      axios
+        .post("/public/tables/iletisim/1", {
+          params: JSON.stringify({ column_set_id: 0 }),
+        })
+        .then((res) => {
+          this.ilt = res.data.data.record;
         });
     },
   },
