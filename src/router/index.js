@@ -14,6 +14,14 @@ const routes = [
     }
   },
   {
+    path: '/one-shot',
+    name: 'OneShot',
+    component: () => import('../views/Pages/one_shot.vue'),
+    meta: {
+      title: 'One Shot'
+    }
+  },
+  {
     path: '/blog',
     name: 'Blog',
     component: () => import('../views/Pages/blog.vue'),

@@ -62,9 +62,7 @@
                 </button>
                 <strong class="tg-logo">
                   <a href="/"
-                    ><img
-                      :src="baseUrl + '_assets/images/logo.png'"
-                      alt="image description"
+                    ><img src="@/assets/one-shot.png" alt="image description"
                   /></a>
                 </strong>
               </div>
@@ -76,17 +74,12 @@
                     </li>
 
                     <li>
-                      <router-link to="/sahalar">Halı Sahalar</router-link>
+                      <router-link to="/one-shot">One Shot Hakkında</router-link>
                     </li>
-                    <li>
-                      <a href="#">Turnuvalar</a>
-                      <ul class="tg-dropdown-menu">
-                        <li v-for="t in turnuva_kategorileri" :key="t">
-                          <router-link :to="'/turnuvalar/' + t.id">
-                            {{ t.name_basic }}
-                          </router-link>
-                        </li>
-                      </ul>
+                    <li v-for="t in turnuva_kategorileri" :key="t">
+                      <router-link :to="'/turnuvalar/' + t.id">
+                        {{ t.name_basic }}
+                      </router-link>
                     </li>
                   </ul>
                 </div>
@@ -100,6 +93,9 @@
                                                 <li><a href="playerdetail.html">playergrid detail</a></li>
                                             </ul>
                                         </!--li-->
+                    <li>
+                      <router-link to="/iletisim">Sponsorlar</router-link>
+                    </li>
                     <li>
                       <router-link to="/iletisim">İletişim</router-link>
                     </li>
@@ -134,10 +130,7 @@
           <router-link to="/">Ana Sayfa</router-link>
         </div>
         <div class="mobile-link" @click="mobileMenu = false">
-          <router-link to="/oneShot">One Shot</router-link>
-        </div>
-        <div class="mobile-link" @click="mobileMenu = false">
-          <router-link to="/sahalar">Sahalar</router-link>
+          <router-link to="/one-shot">One Shot</router-link>
         </div>
         <div
           v-for="t in turnuva_kategorileri"
@@ -251,5 +244,9 @@ export default {
 }
 .mobile-link:hover a {
   color: #ffcc33;
+}
+.tg-header a {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 500;
 }
 </style>

@@ -1,6 +1,5 @@
 <template>
   <div>
-  
     <wrapper></wrapper>
     <searchbox></searchbox>
     <login></login>
@@ -9,15 +8,25 @@
   </div>
 </template>
 <script>
-import wrapper from '@/views/Layout/wrapper.vue'
-import searchbox from '@/views/Layout/searchbox.vue'
-import login from '@/views/Modals/login.vue'
-import register from '@/views/Modals/register.vue'
-import scriptPage from '@/views/Script.vue'
+import wrapper from "@/views/Layout/wrapper.vue";
+import searchbox from "@/views/Layout/searchbox.vue";
+import login from "@/views/Modals/login.vue";
+import register from "@/views/Modals/register.vue";
+import scriptPage from "@/views/Script.vue";
 
 export default {
-  components:{
-    wrapper,searchbox,login,register,scriptPage
+  components: {
+    wrapper,
+    searchbox,
+    login,
+    register,
+    scriptPage,
   },
-}
+};
 </script>
+<style>
+* {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+</style>
