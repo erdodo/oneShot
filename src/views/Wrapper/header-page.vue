@@ -76,10 +76,15 @@
                     <li>
                       <router-link to="/one-shot">One Shot Hakkında</router-link>
                     </li>
-                    <li v-for="t in turnuva_kategorileri" :key="t">
-                      <router-link :to="'/turnuvalar/' + t.id">
-                        {{ t.name_basic }}
-                      </router-link>
+                    <li>
+                      <a href="#">Turnuvalar</a>
+                      <ul class="tg-dropdown-menu">
+                        <li v-for="t in turnuva_kategorileri" :key="t">
+                          <router-link :to="'/turnuvalar/' + t.id">
+                            {{ t.name_basic }}
+                          </router-link>
+                        </li>
+                      </ul>
                     </li>
                   </ul>
                 </div>
@@ -94,7 +99,7 @@
                                             </ul>
                                         </!--li-->
                     <li>
-                      <router-link to="/iletisim">Sponsorlar</router-link>
+                      <router-link to="/sponsorlar">Sponsorlar</router-link>
                     </li>
                     <li>
                       <router-link to="/iletisim">İletişim</router-link>
@@ -141,6 +146,9 @@
           <router-link :to="'/turnuvalar/' + t.id">
             {{ t.name_basic }}
           </router-link>
+        </div>
+        <div class="mobile-link" @click="mobileMenu = false">
+          <router-link to="/sponsorlar">Sponsorlar</router-link>
         </div>
         <div class="mobile-link" @click="mobileMenu = false">
           <router-link to="/iletisim">İletişim</router-link>

@@ -22,6 +22,14 @@ const routes = [
     }
   },
   {
+    path: '/sponsorlar',
+    name: 'Sponsorlar',
+    component: () => import('../views/Pages/sponsorlar.vue'),
+    meta: {
+      title: 'Sponsorlar'
+    }
+  },
+  {
     path: '/blog',
     name: 'Blog',
     component: () => import('../views/Pages/blog.vue'),

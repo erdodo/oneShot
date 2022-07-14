@@ -11,11 +11,11 @@
         <div class="row">
           <div class="tg-banner-content tg-haslayout">
             <div class="tg-pagetitle">
-              <h1>Galeri</h1>
+              <h1>Sponsorlar</h1>
             </div>
             <ol class="tg-breadcrumb">
               <li><a href="#">Ana Sayfa</a></li>
-              <li class="active">Galeri</li>
+              <li class="active">Sponsorlar</li>
             </ol>
           </div>
         </div>
@@ -30,37 +30,14 @@
     <main class="tg-main tg-haslayout">
       <div class="tg-main-section tg-haslayout">
         <div class="container">
-          <div class="row ml-5 pl-5">
-            <div class="row">
-              <div
-                v-for="(g, key) in galeri.records"
-                :key="g"
-                :style="{ background: 'url(' + getImage(g.images, 's_') + ')' }"
-                class="col-12 col-sm-6 col-md-4 col-lg-3 erdo-image"
-                @click="tamEkran(key)"
-              >
-                <div class="h2">{{ g.name_basic }}</div>
-              </div>
-            </div>
-            <div class="pull-right">
-              <ul class="tg-pagination">
-                <li class="tg-prevpage">
-                  <a class="cursor-pointer" @click="oncekiSayfa()">
-                    <i class="fa fa-angle-left"></i>
-                  </a>
-                </li>
-                <li class="active">
-                  <a> {{ this.params.page }} </a>
-                </li>
-                <li>
-                  <a href="#"> {{ galeri.pages }} </a>
-                </li>
-                <li class="tg-nextpage">
-                  <a class="cursor-pointer" @click="sonrakiSayfa()">
-                    <i class="fa fa-angle-right"></i>
-                  </a>
-                </li>
-              </ul>
+          <div class="row">
+            <div
+              v-for="(g, key) in galeri.records"
+              :key="g"
+              class="col-12 col-md-6 col-lg-4"
+              @click="tamEkran(key)"
+            >
+              <img :src="getImage(g.image, 'm_')" class="w-100 h-auto" alt="" />
             </div>
           </div>
         </div>
@@ -105,24 +82,19 @@ export default {
   methods: {
     getGaleri() {
       axios
-        .post("public/tables/galeri", {
-          params: JSON.stringify(this.params),
+        .post("public/tables/sponsor", {
+          params: JSON.stringify({
+            page: 1,
+            limit: "1000",
+            column_array_id: "0",
+            column_array_id_query: "0",
+            sorts: {},
+            filters: {},
+          }),
         })
         .then((res) => {
           this.galeri = res.data.data;
         });
-    },
-    oncekiSayfa() {
-      if (this.params.page > 1) {
-        this.params.page--;
-        this.getGaleri();
-      }
-    },
-    sonrakiSayfa() {
-      if (this.params.page < this.galeri.pages) {
-        this.params.page++;
-        this.getGaleri();
-      }
     },
     getImage(img, boyut) {
       if (img == undefined || img == "[]") {
@@ -152,7 +124,7 @@ export default {
 };
 </script>
 
-<style lang="css">
+<style>
 .erdo-image {
   height: 350px;
   width: 300px;
