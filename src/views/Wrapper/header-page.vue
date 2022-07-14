@@ -74,7 +74,7 @@
                     </li>
 
                     <li>
-                      <router-link to="/one-shot">Hakkında</router-link>
+                      <router-link to="/one-shot">One Shot</router-link>
                     </li>
                     <li>
                       <router-link to="/turnuvalar/1">Yurt İçi Turnuvalar</router-link>

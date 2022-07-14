@@ -16,17 +16,17 @@
     :infinite="true"
     :gap="1"
     fade
-    :slide-ratio="1 / 4"
+    :slide-ratio="1 / 3"
     :dragging-distance="20"
     :arrows-outside="false"
     :breakpoints="{ 800: { visibleSlides: 1, slideMultiple: 1 } }"
+    fixed-height="350px"
   >
     <vueper-slide
       v-for="i in blog"
       :key="i"
       :title="i.title.toString()"
       :image="getImage(i.images)"
-      class=""
     />
   </vueper-slides>
 </template>
