@@ -68,6 +68,9 @@
 <script>
 import axios from "axios";
 export default {
+  props: {
+    filters: Object,
+  },
   data() {
     return {
       baseUrl: process.env.BASE_URL,
@@ -76,7 +79,6 @@ export default {
     };
   },
   mounted() {
-    console.log("wtf");
     this.getMaclar();
   },
   methods: {
@@ -90,7 +92,7 @@ export default {
             column_array_id: "0",
             column_array_id_query: "0",
             sorts: {},
-            filters: {},
+            filters: this.filters ? this.filters : {},
           }),
         })
         .then((res) => {

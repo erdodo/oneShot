@@ -27,43 +27,41 @@
     <!--************************************
 				Main Start
 		*************************************-->
-    <main class="tg-main tg-haslayout">
-      <div class="tg-main-section tg-haslayout">
-        <div class="container">
-          <div class="row ml-5 pl-5">
-            <div class="row">
-              <div
-                v-for="(g, key) in galeri.records"
-                :key="g"
-                :style="{ background: 'url(' + getImage(g.images, 's_') + ')' }"
-                class="col-12 col-sm-6 col-md-4 col-lg-3 erdo-image"
-                @click="tamEkran(key)"
-              >
-                <div class="h2">{{ g.name_basic }}</div>
-              </div>
-            </div>
-            <div class="pull-right">
-              <ul class="tg-pagination">
-                <li class="tg-prevpage">
-                  <a class="cursor-pointer" @click="oncekiSayfa()">
-                    <i class="fa fa-angle-left"></i>
-                  </a>
-                </li>
-                <li class="active">
-                  <a> {{ this.params.page }} </a>
-                </li>
-                <li>
-                  <a href="#"> {{ galeri.pages }} </a>
-                </li>
-                <li class="tg-nextpage">
-                  <a class="cursor-pointer" @click="sonrakiSayfa()">
-                    <i class="fa fa-angle-right"></i>
-                  </a>
-                </li>
-              </ul>
-            </div>
+    <main class="p-5">
+      <div class="row">
+        <div
+          v-for="(g, key) in galeri.records"
+          :key="g"
+          class="col-12 col-sm-6 col-md-4 col-lg-3 p-3"
+          @click="tamEkran(key)"
+        >
+          <div
+            class="erdo-image w-100"
+            :style="{ background: 'url(' + getImage(g.images, 's_') + ')' }"
+          >
+            <div v-if="g.name_basic" class="h2">{{ g.name_basic }}</div>
           </div>
         </div>
+      </div>
+      <div class="pull-right">
+        <ul class="tg-pagination">
+          <li class="tg-prevpage">
+            <a class="cursor-pointer" @click="oncekiSayfa()">
+              <i class="fa fa-angle-left"></i>
+            </a>
+          </li>
+          <li class="active">
+            <a> {{ this.params.page }} </a>
+          </li>
+          <li>
+            <a href="#"> {{ galeri.pages }} </a>
+          </li>
+          <li class="tg-nextpage">
+            <a class="cursor-pointer" @click="sonrakiSayfa()">
+              <i class="fa fa-angle-right"></i>
+            </a>
+          </li>
+        </ul>
       </div>
     </main>
     <!--************************************
@@ -71,11 +69,15 @@
 		*************************************-->
     <div v-if="tamEkranState" class="tam-ekran">
       <a @click="tamEkranState = false" class="close text-danger">X</a>
-      <a class="btn left" @click="tamEkran(tamEkranKey + 1)">ÖNCEKİ</a>
-      <img :src="getImage(galeri.records?.[tamEkranKey].images, 'b_')" alt="" />
-      <a style="right: 30px" class="btn right" @click="tamEkran(tamEkranKey + 1)"
-        >Sonraki</a
-      >
+      <a class="btn left" @click="tamEkran(tamEkranKey + 1)"
+        ><i class="fa fa-angle-left"></i
+      ></a>
+      <div class="tam-ekran-image">
+        <img :src="getImage(galeri.records?.[tamEkranKey].images, 'b_')" alt="" />
+      </div>
+      <a style="right: 30px" class="btn right" @click="tamEkran(tamEkranKey + 1)">
+        <i class="fa fa-angle-right"></i>
+      </a>
     </div>
   </div>
 </template>
@@ -172,6 +174,8 @@ export default {
 }
 .tam-ekran {
   position: fixed;
+  top: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
   background: rgba(0, 0, 0, 0.3);
@@ -184,10 +188,11 @@ export default {
 .tam-ekran .btn {
   color: white;
   font-size: 30px !important;
+  background: rgba(0, 0, 0, 0.3);
   position: absolute;
 }
 .tam-ekran .btn:hover {
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.9);
   color: white;
 }
 .tam-ekran image {
@@ -201,5 +206,10 @@ export default {
   z-index: 9999999999;
   font-size: 40px;
   opacity: 1;
+}
+.tam-ekran-image {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 </style>

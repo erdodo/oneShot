@@ -33,7 +33,10 @@
           <div class="row">
             <div id="tg-twocolumns" class="tg-twocolumns tg-haslayout">
               <div class="col-sm-12 col-xs-12">
-                <figure class="tg-postimg tg-postimgdetail">
+                <figure
+                  class="tg-postimg tg-postimgdetail"
+                  style="display: flex; justify-content: center"
+                >
                   <img v-if="getImage() == null" src="@/assets/blog.jpeg" />
                   <img v-else :src="getImage()" alt="image description" />
                 </figure>

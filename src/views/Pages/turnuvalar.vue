@@ -42,7 +42,7 @@
           <div v-else class="px-5 mx-5">
             <div v-for="t in turnuvalar" :key="t" class="tg-ticket">
               <div class="d-flex flex-column">
-                <div class="p-2 d-flex justify-content-between">
+                <div class="p-2 d-flex flex-column flex-md-row justify-content-between">
                   <span class="h2 m-0 p-0"> {{ t.name_basic }} </span>
                   <span class="h2 m-0 p-0"> {{ t.turnuva_grubu_id }} </span>
                 </div>

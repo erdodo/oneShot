@@ -77,14 +77,13 @@
                       <router-link to="/one-shot">Hakkında</router-link>
                     </li>
                     <li>
-                      <a href="#">Turnuvalar</a>
-                      <ul class="tg-dropdown-menu">
-                        <li v-for="t in turnuva_kategorileri" :key="t">
-                          <router-link :to="'/turnuvalar/' + t.id">
-                            {{ t.name_basic }}
-                          </router-link>
-                        </li>
-                      </ul>
+                      <router-link to="/turnuvalar/1">Yurt İçi Turnuvalar</router-link>
+                    </li>
+                    <li>
+                      <router-link to="/turnuvalar/3">Yurt Dışı Organizasyon</router-link>
+                    </li>
+                    <li>
+                      <router-link to="/turnuvalar/2">Halı Saha Ligleri</router-link>
                     </li>
                   </ul>
                 </div>
@@ -231,7 +230,7 @@ export default {
   color: white;
 }
 .mobile-link:hover a {
-  color: rgb(223,31,36);
+  color: rgb(223, 31, 36);
 }
 .tg-header a {
   font-weight: 500;
