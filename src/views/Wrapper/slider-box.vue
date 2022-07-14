@@ -4,7 +4,7 @@
       <img :src="baseUrl + '_assets/images/bg-pattran.png'" alt="image desctription" />
     </div>
     <div class="slider p-5">
-      <vueper-slides ref="myVueperSlides" class="no-shadow">
+      <vueper-slides ref="myVueperSlides" autoplay class="no-shadow">
         <vueper-slide :content="video"> </vueper-slide>
         <vueper-slide
           v-for="(slide, i) in slider"
@@ -72,7 +72,7 @@ export default {
 <style>
 .slider {
   position: absolute;
-  top: 240px;
+  top: 19vh;
   width: 100%;
   height: 100%;
 }

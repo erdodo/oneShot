@@ -2323,6 +2323,8 @@ address { font-style: italic; }
 }
 .tg-pointtable{
 	width:100%;
+
+	display: flex;
 	float:left;
 	background:#f7f7f7;
 }
@@ -2873,7 +2875,7 @@ address { font-style: italic; }
 	width:100%;
 	padding:30px;
 	position:absolute;
-	background:#ffcc33 url(../images/player/img-04.png) no-repeat 100% 30px;
+	background:rgb(223,31,36) url(../images/player/img-04.png) no-repeat 100% 30px;
 }
 .tg-playerbox .tg-playcontent{padding:0;}
 .tg-playerbox .tg-playcontent h3 a:hover{ color:#373542;}
@@ -4177,8 +4179,8 @@ blockquote q{
 .tg-productsize .tg-checkbox label{padding:0 6px;}
 .tg-productcolor .tg-checkbox label{ border:1px solid #373542;}
 .tg-productcolor .tg-checkbox input[type=checkbox] + label.tg-colorone:before{
-	background:#ffcc33;
-	border-color:#ffcc33;
+	background:rgb(223,31,36);
+	border-color:rgb(223,31,36);
 }
 .tg-productcolor .tg-checkbox input[type=checkbox] + label.tg-colortwo:before{
 	background:#ff336d;

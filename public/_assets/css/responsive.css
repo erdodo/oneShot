@@ -660,7 +660,10 @@
 	}
 	.tg-upcomingmatch {height: 321px;}
 	.tg-matchdetail{ padding:10px;}
-	.tg-upcomingmatch .tg-match .tg-box .tg-teamlogo{width:70px;}
+	.tg-upcomingmatch .tg-match .tg-box .tg-teamlogo img {width:60px;}
+	.tg-teamlogo>img {
+width:60px;
+	}
 	.tg-upcomingmatch .tg-match .tg-box h3{
 		margin:25px 0;
 		font-size:20px;

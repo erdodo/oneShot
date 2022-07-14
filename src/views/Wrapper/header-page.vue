@@ -74,7 +74,7 @@
                     </li>
 
                     <li>
-                      <router-link to="/one-shot">One Shot Hakkında</router-link>
+                      <router-link to="/one-shot">Hakkında</router-link>
                     </li>
                     <li>
                       <a href="#">Turnuvalar</a>
@@ -118,15 +118,18 @@
         </div>
       </div>
     </header>
-    <div class="mobile-header-collapse d-flex d-md-none">
+    <div class="mobile-header-collapse d-flex justify-content-between w-100 d-md-none">
       <button
         type="button"
-        class="tg-btn px-4 m-4"
+        class="tg-btn px-4 rounded m-4"
         style="height: min-content"
         @click="mobileMenu = !mobileMenu"
       >
         <i class="fa fa-bars"></i>
       </button>
+      <div class="mobile-logo">
+        <img src="@/assets/one-shot.png" alt="image description" />
+      </div>
       <div class="mobile-menu" v-if="mobileMenu == true">
         <div class="w-100 d-flex justify-content-end px-5 cursor-pointer">
           <h3 class="text-danger" @click="mobileMenu = false">X</h3>
@@ -135,17 +138,16 @@
           <router-link to="/">Ana Sayfa</router-link>
         </div>
         <div class="mobile-link" @click="mobileMenu = false">
-          <router-link to="/one-shot">One Shot</router-link>
+          <router-link to="/one-shot">Hakkında</router-link>
         </div>
-        <div
-          v-for="t in turnuva_kategorileri"
-          :key="t"
-          class="mobile-link"
-          @click="mobileMenu = false"
-        >
-          <router-link :to="'/turnuvalar/' + t.id">
-            {{ t.name_basic }}
-          </router-link>
+        <div class="mobile-link" @click="mobileMenu = false">
+          <router-link to="/turnuvalar/1">Yurt İçi Turnuvalar</router-link>
+        </div>
+        <div class="mobile-link" @click="mobileMenu = false">
+          <router-link to="/turnuvalar/3">Yurt Dışı Organizasyon</router-link>
+        </div>
+        <div class="mobile-link" @click="mobileMenu = false">
+          <router-link to="/turnuvalar/2">Halı Saha Ligleri</router-link>
         </div>
         <div class="mobile-link" @click="mobileMenu = false">
           <router-link to="/sponsorlar">Sponsorlar</router-link>
@@ -182,31 +184,9 @@ export default {
     };
   },
   created() {
-    this.getTurnuvalar();
+    this.getIletisim();
   },
   methods: {
-    getTurnuvalar() {
-      axios
-        .post("public/tables/turnuva_kategorileri", {
-          params: JSON.stringify({
-            page: 1,
-            limit: "10",
-            column_array_id: "0",
-            column_array_id_query: "0",
-            sorts: {},
-            filters: {
-              description: {
-                type: 100,
-                guiType: "text",
-                filter: null,
-              },
-            },
-          }),
-        })
-        .then((res) => {
-          this.turnuva_kategorileri = res.data.data.records;
-        });
-    },
     getIletisim() {
       axios
         .post("/public/tables/iletisim/1", {
@@ -239,7 +219,7 @@ export default {
   background: rgba(0, 0, 0, 0.7);
 }
 .mobile-link {
-  background: rgba(0, 0, 0, 0.5);
+  background: rgb(115, 12, 43, 0.8);
   padding: 10px;
   border-radius: 7px;
   margin: 15px;
@@ -251,9 +231,12 @@ export default {
   color: white;
 }
 .mobile-link:hover a {
-  color: #ffcc33;
+  color: rgb(223,31,36);
 }
 .tg-header a {
   font-weight: 500;
+}
+.mobile-logo {
+  width: 90px;
 }
 </style>
