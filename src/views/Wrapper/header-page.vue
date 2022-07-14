@@ -246,7 +246,6 @@ export default {
   color: #ffcc33;
 }
 .tg-header a {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 500;
 }
 </style>

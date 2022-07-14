@@ -26,7 +26,6 @@ export default {
 </script>
 <style>
 * {
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-family: oswald Oswald, Arial, Helvetica, sans-serif;
 }
 </style>

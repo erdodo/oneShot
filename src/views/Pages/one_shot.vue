@@ -32,7 +32,9 @@
       <!--************************************
 					About Us Start
 			*************************************-->
-      <haberlerVue></haberlerVue>
+      <div class="p-5">
+        <haberlerVue></haberlerVue>
+      </div>
       <section class="tg-main-section tg-haslayout">
         <div class="container">
           <div class="tg-section-name">

@@ -1,22 +1,33 @@
 <template>
+  <!--vueper-slides-- autoplay :visible-slides="3">
+    <vueper-slide v-for="(slide, i) in blog" :key="i" :image="getImage(slide.images)">
+      <template #loader>
+        <i class="icon icon-loader spinning"></i>
+        <span>Loading...</span>
+      </template>
+    </vueper-slide>
+  </!--vueper-slides-->
   <vueper-slides
-    :autoplay="true"
+    v-if="blogState"
     class="no-shadow"
-    :visible-slides="3"
+    :visible-slides="5"
     slide-multiple
-    :gap="3"
+    autoplay
+    :infinite="true"
+    :gap="1"
+    fade
     :slide-ratio="1 / 4"
-    :dragging-distance="500"
-    :breakpoints="{ 800: { visibleSlides: 2, slideMultiple: 2 } }"
+    :dragging-distance="20"
+    :arrows-outside="false"
+    :breakpoints="{ 800: { visibleSlides: 1, slideMultiple: 1 } }"
   >
     <vueper-slide
       v-for="i in blog"
       :key="i"
-      :title="i.title"
+      :title="i.title.toString()"
       :image="getImage(i.images)"
-      @click="tiklandi(i)"
-    >
-    </vueper-slide>
+      class=""
+    />
   </vueper-slides>
 </template>
 
@@ -30,6 +41,7 @@ export default {
   data() {
     return {
       blog: {},
+      blogState: false,
     };
   },
   mounted() {
@@ -51,6 +63,7 @@ export default {
         })
         .then((res) => {
           this.blog = res.data.data.records;
+          this.blogState = res.data.data.all_records_count > 0;
         });
     },
     getImage(img) {
@@ -60,7 +73,7 @@ export default {
         return (
           this.imgUrl +
           JSON.parse(img)[0].destination_path +
-          "/m_" +
+          "/b_" +
           JSON.parse(img)[0].file_name
         );
       }
@@ -80,5 +93,8 @@ export default {
   color: black;
   font-size: larger;
   font-weight: 800;
+}
+.slider-3 {
+  height: 300px;
 }
 </style>
