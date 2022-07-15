@@ -7,6 +7,11 @@
     role="dialog"
     @click="modalClick()"
   >
+    <span
+      class="text-danger cursor-pointer h2"
+      style="position: absolute; right: 10vw; top: 5vh"
+      >X</span
+    >
     <div class="d-flex justify-content-center align-items-center" style="padding: 50px">
       <img
         @click="imgClick = true"

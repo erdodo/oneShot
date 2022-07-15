@@ -18,7 +18,7 @@
                   :key="m"
                   class="tg-upcomingmatch-slider my-2 tg-upcomingmatch"
                 >
-                  <div class="card">
+                  <div class="card cursor-pointer" @click="yonlendir(m.id)">
                     <div class="card-body">
                       <div
                         class="d-flex flex-column flex-md-row justify-content-between align-items-center"
@@ -101,6 +101,9 @@ export default {
           this.maclar = res.data.data.records;
           this.$emit("maclar", this.maclar);
         });
+    },
+    yonlendir(i) {
+      this.$router.push("/maclar/" + i);
     },
   },
   watch: {

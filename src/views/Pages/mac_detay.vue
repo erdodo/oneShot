@@ -89,6 +89,39 @@
                         </ul>
                       </div>
                     </div>
+                    <div
+                      class="w-100 d-flex flex-column justify-content-center align-items-center"
+                    >
+                      <div
+                        v-for="(data, dk) in dakikaVeri"
+                        :key="dk"
+                        class="text-white d-flex w-100"
+                      >
+                        <div class="w-50">
+                          <div
+                            class="text-right"
+                            v-if="
+                              data.takimlar_id == detay?.takimlar_ev_sahibi?.[0]?.display
+                            "
+                          >
+                            <span v-if="data.veri == 'kartlar'" class="text-white">
+                              {{ data.kart_goren_futbolcu }}</span
+                            >
+                          </div>
+                        </div>
+                        <div class="w-50">
+                          <div
+                            v-if="
+                              data.takimlar_id == detay?.takimlar_deplasman?.[0]?.display
+                            "
+                          >
+                            <span v-if="data.veri == 'kartlar'" class="text-white">
+                              {{ data.kart_goren_futbolcu }}</span
+                            >
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -146,7 +179,6 @@ export default {
                 type: 1,
                 guiType: "multiselect",
                 filter: [this.$route.params.id],
-                description: "",
               },
             },
           }),
@@ -156,6 +188,7 @@ export default {
             data["veri"] = "goller";
             this.dakikaVeri[data.gol_dakikasi] = data;
           }
+          console.log(this.dakikaVeri);
         });
     },
     getKartlar() {
@@ -168,11 +201,10 @@ export default {
             column_array_id_query: "0",
             sorts: {},
             filters: {
-              maclar_id: {
+              maclar_name: {
                 type: 1,
                 guiType: "multiselect",
                 filter: [this.$route.params.id],
-                description: "",
               },
             },
           }),
@@ -182,6 +214,7 @@ export default {
             data["veri"] = "kartlar";
             this.dakikaVeri[data.kart_gorme_dakikasiint] = data;
           }
+          console.log(this.dakikaVeri);
         });
     },
     getDegisiklikler() {
@@ -194,11 +227,10 @@ export default {
             column_array_id_query: "0",
             sorts: {},
             filters: {
-              maclar_id: {
+              maclar_name: {
                 type: 1,
                 guiType: "multiselect",
                 filter: [this.$route.params.id],
-                description: "",
               },
             },
           }),
@@ -208,6 +240,7 @@ export default {
             data["veri"] = "degisiklikler";
             this.dakikaVeri[data.degisklik_dakikasi] = data;
           }
+          console.log(this.dakikaVeri);
         });
     },
   },
