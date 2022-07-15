@@ -71,7 +71,11 @@
                 <strong class="tg-logo">
                   <a
                     href="/"
-                    style="background: rgba(255, 255, 255, 0.5); border-radius: 50%"
+                    style="
+                      background: rgba(255, 255, 255, 0.5);
+                      border-radius: 50%;
+                      padding: 15px;
+                    "
                     ><img src="@/assets/one-shot.png" alt="image description"
                   /></a>
                 </strong>
@@ -152,7 +156,7 @@
           "Hayallerinize Çok Uzak Değilsiniz"
         </h4>
       </div>
-      <div class="mobile-logo">
+      <div class="mobile-logo p-1">
         <img src="@/assets/one-shot.png" alt="image description" />
       </div>
       <div class="mobile-menu" v-if="mobileMenu == true">
