@@ -1867,7 +1867,7 @@ address { font-style: italic; }
 	content:'';
 	z-index:-1;
 	position:absolute;
-	border-bottom: 500px solid;
+	border-bottom: 800px solid;
 	border-left: 70px solid transparent !important;
 }
 .tg-box{

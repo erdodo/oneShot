@@ -1,7 +1,7 @@
 <template>
   <div
     class=""
-    :class="popupState ? 'show in fade tg-modalbox modal' : 'd-none'"
+    :class="popupState == 'asdas' ? 'show in fade tg-modalbox modal' : 'd-none'"
     id="tg-login"
     tabindex="-1"
     role="dialog"

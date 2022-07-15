@@ -55,14 +55,6 @@
                             </a>
                           </h4>
                         </div>
-                        <ul class="tg-playernameplusgoadtime">
-                          <li
-                            v-for="(dk, key) in futbolcular_maclar_deplasman"
-                            :key="key"
-                          >
-                            {{ o.display }}
-                          </li>
-                        </ul>
                       </div>
                       <div class="tg-teamscore">
                         <strong class="tg-team-logo">
@@ -80,51 +72,138 @@
                             </a>
                           </h4>
                         </div>
-                        <ul class="tg-playernameplusgoadtime">
-                          <li v-for="o in detay.futbolcular_maclar_deplasman" :key="o">
-                            <router-link :to="'/futbolcu/' + o.source">{{
-                              o.display
-                            }}</router-link>
-                          </li>
-                        </ul>
                       </div>
-                    </div>
-                    <div
-                      class="w-100 d-flex flex-column justify-content-center align-items-center"
-                    >
+                      <!----->
                       <div
-                        v-for="(data, dk) in dakikaVeri"
-                        :key="dk"
-                        class="text-white d-flex w-100"
+                        class="w-100 d-flex flex-column justify-content-center align-items-center"
                       >
-                        <div class="w-50">
-                          <div
-                            class="text-right"
-                            v-if="
-                              data.takimlar_id == detay?.takimlar_ev_sahibi?.[0]?.display
-                            "
-                          >
-                            <span v-if="data.veri == 'kartlar'" class="text-white">
-                              {{ data.kart_goren_futbolcu }}</span
+                        <div
+                          v-for="dk of Object.keys(dakikaVeriSirali).sort()"
+                          :key="dk"
+                          class="text-white d-flex w-100"
+                        >
+                          <div class="w-50 py-2">
+                            <div
+                              class="text-right"
+                              v-if="
+                                dakikaVeriSirali[dk].takimlar_id ==
+                                detay?.takimlar_ev_sahibi?.[0]?.display
+                              "
                             >
+                              <span
+                                v-if="dakikaVeriSirali[dk].veri == 'kartlar'"
+                                class="text-white"
+                              >
+                                {{ dakikaVeriSirali[dk].kart_goren_futbolcu }} /{{
+                                  dakikaVeriSirali[dk].kart_gorme_dakikasiint
+                                }}
+                                <img
+                                  v-if="
+                                    dakikaVeriSirali[dk].kart_turu_id == 'Kırmızı Kart'
+                                  "
+                                  src="@/assets/red-card.png"
+                                  alt="Kırmızı Kart"
+                                  style="width: 33px"
+                                />
+                                <img
+                                  v-else-if="
+                                    dakikaVeriSirali[dk].kart_turu_id == 'Sarı Kart'
+                                  "
+                                  src="@/assets/yellow-card.png"
+                                  alt="Sarı Kart"
+                                  style="width: 33px"
+                                />
+                              </span>
+                              <span v-else-if="dakikaVeriSirali[dk].veri == 'goller'">
+                                {{ dakikaVeriSirali[dk].gol_futbolcular_id }}/
+                                {{ dakikaVeriSirali[dk].gol_dakikasi }}
+                                <img
+                                  src="@/assets/goal.png"
+                                  alt="Gol"
+                                  style="width: 33px"
+                                />
+                              </span>
+                            </div>
                           </div>
-                        </div>
-                        <div class="w-50">
-                          <div
-                            v-if="
-                              data.takimlar_id == detay?.takimlar_deplasman?.[0]?.display
-                            "
-                          >
-                            <span v-if="data.veri == 'kartlar'" class="text-white">
-                              {{ data.kart_goren_futbolcu }}</span
+                          <div class="w-50 py-2">
+                            <div
+                              v-if="
+                                dakikaVeriSirali[dk].takimlar_id ==
+                                detay?.takimlar_deplasman?.[0]?.display
+                              "
                             >
+                              <span
+                                v-if="dakikaVeriSirali[dk].veri == 'kartlar'"
+                                class="text-white"
+                              >
+                                <img
+                                  v-if="
+                                    dakikaVeriSirali[dk].kart_turu_id == 'Kırmızı Kart'
+                                  "
+                                  src="@/assets/red-card.png"
+                                  alt="Kırmızı Kart"
+                                  style="width: 33px"
+                                />
+                                <img
+                                  v-else-if="
+                                    dakikaVeriSirali[dk].kart_turu_id == 'Sarı Kart'
+                                  "
+                                  src="@/assets/yellow-card.png"
+                                  alt="Sarı Kart"
+                                  style="width: 33px"
+                                />
+                                {{ dakikaVeriSirali[dk].kart_gorme_dakikasiint }}/
+                                {{ dakikaVeriSirali[dk].kart_goren_futbolcu }}
+                              </span>
+                              <span v-else-if="dakikaVeriSirali[dk].veri == 'goller'">
+                                <img
+                                  src="@/assets/goal.png"
+                                  alt="Gol"
+                                  style="width: 33px"
+                                />
+                                {{ dakikaVeriSirali[dk].gol_dakikasi }}/{{
+                                  dakikaVeriSirali[dk].gol_futbolcular_id
+                                }}
+                              </span>
+                            </div>
                           </div>
                         </div>
                       </div>
+                      <!----->
                     </div>
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+          <div class="row mt-5">
+            <div class="col-12">
+              <h3>Canlı Yayın</h3>
+              <iframe
+                v-if="getLink(detay.canli_yayin) != 'empty'"
+                width="560"
+                height="515"
+                :src="getLink(detay.canli_yayin)"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+          <div class="row mt-5">
+            <div class="col-12">
+              <h3>Video</h3>
+              <iframe
+                v-if="getLink(detay.video_url) != 'empty'"
+                width="560"
+                height="515"
+                :src="getLink(detay.video_url)"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              ></iframe>
             </div>
           </div>
         </div>
@@ -145,6 +224,8 @@ export default {
       baseUrl: process.env.BASE_URL,
       detay: {},
       dakikaVeri: {},
+      dakikaVeriSirali: {},
+      veriGeldi: 0,
     };
   },
   mounted() {
@@ -188,7 +269,7 @@ export default {
             data["veri"] = "goller";
             this.dakikaVeri[data.gol_dakikasi] = data;
           }
-          console.log(this.dakikaVeri);
+          this.veriGeldi++;
         });
     },
     getKartlar() {
@@ -214,7 +295,7 @@ export default {
             data["veri"] = "kartlar";
             this.dakikaVeri[data.kart_gorme_dakikasiint] = data;
           }
-          console.log(this.dakikaVeri);
+          this.veriGeldi++;
         });
     },
     getDegisiklikler() {
@@ -240,13 +321,30 @@ export default {
             data["veri"] = "degisiklikler";
             this.dakikaVeri[data.degisklik_dakikasi] = data;
           }
-          console.log(this.dakikaVeri);
+          this.veriGeldi++;
         });
+    },
+    getLink(data) {
+      if (data != null) {
+        return data.replace("watch?v=", "embed/");
+      } else {
+        return "empty";
+      }
     },
   },
   watch: {
-    dakikaVeri() {
-      console.log(this.dakikaVeri);
+    veriGeldi() {
+      if (this.veriGeldi == 3) {
+        console.log(this.dakikaVeri);
+
+        const sortable = Object.fromEntries(
+          Object.entries(this.dakikaVeri).sort(([, a], [, b]) => a - b)
+        );
+        this.dakikaVeri = sortable;
+        console.log(sortable);
+        this.dakikaVeriSirali = sortable;
+        console.log(this.dakikaVeriSirali);
+      }
     },
   },
 };
