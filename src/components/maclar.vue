@@ -98,6 +98,7 @@ export default {
         .then((res) => {
           this.maclarLoading = false;
           this.maclar = res.data.data.records;
+          this.$emit("maclar", this.maclar);
         });
     },
   },

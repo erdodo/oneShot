@@ -39,6 +39,7 @@
             filter: [this.$route.params.id],
           },
         }"
+        @maclar="maclar = $event"
       ></maclar>
       <!--************************************
 					Fixtures End
@@ -77,14 +78,16 @@
                     </div>
                     <div class="my-4">
                       <iframe
+                        v-if="getLink(maclar[0]) != 'empty'"
                         width="560"
                         height="315"
-                        src="https://www.youtube.com/embed/6mMrWAgtWio"
+                        :src="getLink(maclar[0])"
                         title="YouTube video player"
                         frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowfullscreen
                       ></iframe>
+                      <img v-else src="@/assets/blog.jpeg" alt="" />
                     </div>
                     <div class="tg-btnbox mt-4">
                       <router-link :to="'/maclar/' + maclar[0]?.id" class="tg-btn"
@@ -211,6 +214,15 @@ export default {
           this.puanDurumuLoading = false;
           this.puan_durumu = res.data.data.records;
         });
+    },
+    getLink(data) {
+      if (data?.canli_yayin != null) {
+        return data.canli_yayin.replace("watch?v=", "embed/");
+      } else if (data?.video_url != null) {
+        return data.video_url.replace("watch?v=", "embed/");
+      } else {
+        return "empty";
+      }
     },
   },
   watch: {

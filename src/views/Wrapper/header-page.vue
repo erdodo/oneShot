@@ -4,6 +4,7 @@
       <div class="container">
         <div class="">
           <div class="row">
+            <div class="tg-colhalf pull-right"></div>
             <!--div class="tg-colhalf pull-right">
               <nav class="tg-addnav">
                 <ul>
@@ -23,27 +24,27 @@
             <div class="tg-colhalf">
               <ul class="tg-socialicons">
                 <li>
-                  <a :href="ilt.facebook">
+                  <a :href="ilt.facebook" target="_blank">
                     <i class="fa fa-facebook"></i>
                   </a>
                 </li>
                 <li>
-                  <a :href="ilt.twitter">
+                  <a :href="ilt.twitter" target="_blank">
                     <i class="fa fa-twitter"></i>
                   </a>
                 </li>
                 <li>
-                  <a :href="ilt.instagram">
+                  <a :href="ilt.instagram" target="_blank">
                     <i class="fa fa-instagram"></i>
                   </a>
                 </li>
                 <li>
-                  <a :href="'mailto:' + ilt.email_basic">
+                  <a :href="'mailto:' + ilt.email_basic" target="_blank">
                     <i class="fa fa-envelope-o"></i>
                   </a>
                 </li>
                 <li>
-                  <a :href="'tel:' + ilt.phone">
+                  <a :href="'tel:' + ilt.phone" target="_blank">
                     <i class="fa fa-phone"></i>
                   </a>
                 </li>
