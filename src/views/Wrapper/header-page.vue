@@ -101,14 +101,15 @@
                     <li>
                       <router-link to="/sponsorlar">Sponsorlar</router-link>
                     </li>
-                    <li>
-                      <router-link to="/iletisim">İletişim</router-link>
-                    </li>
+
                     <li>
                       <router-link to="/blog">Blog</router-link>
                     </li>
                     <li>
                       <router-link to="/galeri">Galeri</router-link>
+                    </li>
+                    <li>
+                      <router-link to="/iletisim">İletişim</router-link>
                     </li>
                   </ul>
                 </div>
@@ -152,14 +153,15 @@
         <div class="mobile-link" @click="mobileMenu = false">
           <router-link to="/sponsorlar">Sponsorlar</router-link>
         </div>
-        <div class="mobile-link" @click="mobileMenu = false">
-          <router-link to="/iletisim">İletişim</router-link>
-        </div>
+
         <div class="mobile-link" @click="mobileMenu = false">
           <router-link to="/blog">Blog</router-link>
         </div>
         <div class="mobile-link" @click="mobileMenu = false">
           <router-link to="/galeri">Galeri</router-link>
+        </div>
+        <div class="mobile-link" @click="mobileMenu = false">
+          <router-link to="/iletisim">İletişim</router-link>
         </div>
         <!--div class="mobile-link" @click="mobileMenu = false">
           <a href="javascript()" data-toggle="modal" data-target="#tg-login">Giriş</a>
