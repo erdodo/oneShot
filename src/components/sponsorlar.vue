@@ -5,6 +5,8 @@
       class="no-shadow"
       :visible-slides="3"
       :gap="5"
+      :slide-ratio="1 / 3"
+      :breakpoints="{ 800: { visibleSlides: 2, slideMultiple: 2 } }"
       autoplay
     >
       <vueper-slide

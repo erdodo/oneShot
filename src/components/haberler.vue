@@ -20,17 +20,34 @@
       fade
       :slide-ratio="1 / 3"
       :dragging-distance="200"
-      :arrows-outside="false"
+      :arrows-outside="true"
       :breakpoints="{ 800: { visibleSlides: 1, slideMultiple: 1 } }"
       fixed-height="350px"
     >
-      <vueper-slide
-        v-for="i in blog"
-        :key="i"
-        style="justify-content: end"
-        :title="i.title.toString()"
-        :image="getImage(i.images)"
-      />
+      <template v-for="i in blog" :key="i">
+        <vueper-slide
+          style="justify-content: end"
+          :title="i.title.toString()"
+          @click="tiklandi(i)"
+        >
+          <template #content>
+            <div class="haber-content h-100 w-100 card">
+              <img :src="getImage(i.images)" alt="" />
+              <div class="p-3">
+                <span class="h4">{{ i.title }}</span>
+                <p class="ellipsis-4">{{ i.description }}</p>
+              </div>
+            </div>
+          </template>
+        </vueper-slide>
+      </template>
+      <template #arrow-left>
+        <i class="fa-solid fa-arrow-left text-primary" style="font-size: 35px"></i>
+      </template>
+
+      <template #arrow-right>
+        <i class="fa-solid fa-arrow-right text-primary" style="font-size: 35px"></i>
+      </template>
     </vueper-slides>
   </div>
 </template>
@@ -77,7 +94,7 @@ export default {
         return (
           this.imgUrl +
           JSON.parse(img)[0].destination_path +
-          "/b_" +
+          "/s_" +
           JSON.parse(img)[0].file_name
         );
       }
@@ -104,5 +121,7 @@ export default {
 .haberler .vueperslide__content-wrapper {
   justify-content: end !important;
   padding-bottom: 10px;
+}
+.haber-content {
 }
 </style>

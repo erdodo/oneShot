@@ -28,4 +28,11 @@ export default {
 * {
   font-family: oswald Oswald, Arial, Helvetica, sans-serif;
 }
+.ellipsis-4 {
+  display: -webkit-box;
+  max-width: 200px;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
 </style>

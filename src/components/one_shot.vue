@@ -2,8 +2,8 @@
   <div>
     <div class="container">
       <div>
-        <div class="w-100 d-flex">
-          <video controls style="height: 60vh">
+        <div class="w-100 d-flex flex-column flex-lg-row">
+          <video controls style="height: 60vh; max-width: 90vw">
             <source :src="baseUrl + '_assets/oneTanitim.mp4'" type="video/mp4" />
           </video>
           <div class="px-4">
