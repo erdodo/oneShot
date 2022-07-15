@@ -1,17 +1,27 @@
 <template>
   <div>
-    <div class="p-5">
-      <haberlerVue></haberlerVue>
-    </div>
     <div class="container">
-      <h1>One shot</h1>
-      <h5>
-        Türkiye ' nin seçkin ve elit antrenör ve scoutları ile futbol temel eğitimi almış,
-        gelişime açık, hedefleri ve hayalleri olan nice alt yaş gruplarındaki
-        çocuklarımızın keşfi için hazırlanmış ulusal ve uluslararası sportif turnuva, lig
-        ve organizasyon hizmeti veren ONE SHOT, tamamen özgün ve sosyal sorumluluk bilinci
-        ile faaliyetlerini yürütmektedir
-      </h5>
+      <div>
+        <div class="w-100 d-flex">
+          <video controls style="height: 60vh">
+            <source :src="baseUrl + '_assets/oneTanitim.mp4'" type="video/mp4" />
+          </video>
+          <div class="px-4">
+            <h1>One shot</h1>
+            <h5 style="text-transform: none">
+              Türkiye ' nin seçkin ve elit antrenör ve scoutları ile futbol temel eğitimi
+              almış, gelişime açık, hedefleri ve hayalleri olan nice alt yaş gruplarındaki
+              çocuklarımızın keşfi için hazırlanmış ulusal ve uluslararası sportif
+              turnuva, lig ve organizasyon hizmeti veren ONE SHOT, tamamen özgün ve sosyal
+              sorumluluk bilinci ile faaliyetlerini yürütmektedir
+            </h5>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-5">
+        <haberlerVue></haberlerVue>
+      </div>
     </div>
   </div>
 </template>

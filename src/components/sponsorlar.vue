@@ -1,12 +1,19 @@
 <template>
   <div v-if="sponsorState">
-    <vueper-slides fixed-height="300px" class="no-shadow" :visible-slides="3" autoplay>
+    <vueper-slides
+      fixed-height="300px"
+      class="no-shadow"
+      :visible-slides="3"
+      :gap="5"
+      autoplay
+    >
       <vueper-slide
         v-for="(slide, i) in galeri.records"
         :key="i"
         :title="slide.title"
         :image="getImage(slide.image, 'm_')"
         @click="tamEkran(key)"
+        style="background-size: contain; background-repeat: no-repeat"
       >
       </vueper-slide>
     </vueper-slides>

@@ -5,7 +5,6 @@
     </div>
     <div class="slider p-5">
       <vueper-slides ref="myVueperSlides" autoplay class="no-shadow">
-        <vueper-slide :content="video"> </vueper-slide>
         <vueper-slide
           v-for="(slide, i) in slider"
           :key="i"
@@ -29,7 +28,6 @@ export default {
       slider: [],
       parallax: 1,
       parallaxFixedContent: false,
-      video: `<div style="    height: 65vh;"><video autoplay controls style="height:100%"><source src="/_assets/oneTanitim.mp4" type="video/mp4"></video></div>`,
     };
   },
   mounted() {

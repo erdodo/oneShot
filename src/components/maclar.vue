@@ -3,6 +3,7 @@
     <div class="container">
       <div class="tg-section-name">
         <h2>MAÇLAR</h2>
+        <!-- Button trigger modal -->
       </div>
       <div class="col-sm-11 col-xs-11 pull-right">
         <div class="row">

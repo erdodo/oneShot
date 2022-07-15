@@ -7,28 +7,32 @@
       </template>
     </vueper-slide>
   </!--vueper-slides-->
-  <vueper-slides
-    v-if="blogState"
-    class="no-shadow"
-    :visible-slides="5"
-    slide-multiple
-    autoplay
-    :infinite="true"
-    :gap="1"
-    fade
-    :slide-ratio="1 / 3"
-    :dragging-distance="20"
-    :arrows-outside="false"
-    :breakpoints="{ 800: { visibleSlides: 1, slideMultiple: 1 } }"
-    fixed-height="350px"
-  >
-    <vueper-slide
-      v-for="i in blog"
-      :key="i"
-      :title="i.title.toString()"
-      :image="getImage(i.images)"
-    />
-  </vueper-slides>
+  <div class="haberler">
+    <h3>Haberler</h3>
+    <vueper-slides
+      v-if="blogState"
+      class="no-shadow"
+      :visible-slides="4"
+      slide-multiple
+      autoplay
+      :infinite="true"
+      :gap="1"
+      fade
+      :slide-ratio="1 / 3"
+      :dragging-distance="200"
+      :arrows-outside="false"
+      :breakpoints="{ 800: { visibleSlides: 1, slideMultiple: 1 } }"
+      fixed-height="350px"
+    >
+      <vueper-slide
+        v-for="i in blog"
+        :key="i"
+        style="justify-content: end"
+        :title="i.title.toString()"
+        :image="getImage(i.images)"
+      />
+    </vueper-slides>
+  </div>
 </template>
 
 <script>
@@ -96,5 +100,9 @@ export default {
 }
 .slider-3 {
   height: 300px;
+}
+.haberler .vueperslide__content-wrapper {
+  justify-content: end !important;
+  padding-bottom: 10px;
 }
 </style>

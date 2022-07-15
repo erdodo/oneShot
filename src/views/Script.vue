@@ -20,8 +20,8 @@ export default {
       useScript(process.env.BASE_URL + "_assets/js/appear.js");
       setTimeout(() => {
         useScript(process.env.BASE_URL + "_assets/js/main.js");
-      }, 1000);
-    }, 100);
+      }, 100);
+    }, 1000);
   },
 };
 </script>

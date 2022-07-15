@@ -4,7 +4,14 @@
       <div class="container">
         <div class="">
           <div class="row">
-            <div class="tg-colhalf pull-right"></div>
+            <div class="tg-colhalf pull-right">
+              <h4
+                class="text-white"
+                style="font-family: 'Caveat', cursive; text-transform: none"
+              >
+                "Hayallerinize Çok Uzak Değilsiniz"
+              </h4>
+            </div>
             <!--div class="tg-colhalf pull-right">
               <nav class="tg-addnav">
                 <ul>
@@ -62,7 +69,9 @@
                   <i class="fa fa-bars"></i>
                 </button>
                 <strong class="tg-logo">
-                  <a href="/"
+                  <a
+                    href="/"
+                    style="background: rgba(255, 255, 255, 0.5); border-radius: 50%"
                     ><img src="@/assets/one-shot.png" alt="image description"
                   /></a>
                 </strong>
@@ -71,20 +80,27 @@
                 <div class="tg-colhalf">
                   <ul>
                     <li class="">
-                      <router-link to="/">Ana Sayfa</router-link>
+                      <router-link to="/">AnaSayfa</router-link>
                     </li>
 
                     <li>
-                      <router-link to="/one-shot">One Shot</router-link>
+                      <router-link to="/one-shot">OneShot</router-link>
                     </li>
                     <li>
-                      <router-link to="/turnuvalar/1">Yurt İçi Turnuvalar</router-link>
+                      <router-link to="/turnuvalar/1"
+                        >Turnuvalar <a style="font-size: 10px">Yurt İçi </a></router-link
+                      >
                     </li>
                     <li>
-                      <router-link to="/turnuvalar/3">Yurt Dışı Organizasyon</router-link>
+                      <router-link to="/turnuvalar/3"
+                        >Organizasyonlar
+                        <a style="font-size: 10px">Yurt Dışı </a></router-link
+                      >
                     </li>
                     <li>
-                      <router-link to="/turnuvalar/2">Halı Saha Ligleri</router-link>
+                      <router-link to="/turnuvalar/2"
+                        >Ligler <a style="font-size: 10px">Halı Saha </a></router-link
+                      >
                     </li>
                   </ul>
                 </div>
@@ -119,7 +135,10 @@
         </div>
       </div>
     </header>
-    <div class="mobile-header-collapse d-flex justify-content-between w-100 d-md-none">
+    <div
+      class="mobile-header-collapse d-flex justify-content-between align-items-center w-100 d-md-none"
+      style="background: rgba(255, 255, 255, 0.6)"
+    >
       <button
         type="button"
         class="tg-btn px-4 rounded m-4"
@@ -128,6 +147,11 @@
       >
         <i class="fa fa-bars"></i>
       </button>
+      <div>
+        <h4 style="font-family: 'Caveat', cursive; text-transform: none">
+          "Hayallerinize Çok Uzak Değilsiniz"
+        </h4>
+      </div>
       <div class="mobile-logo">
         <img src="@/assets/one-shot.png" alt="image description" />
       </div>
@@ -136,10 +160,10 @@
           <h3 class="text-danger" @click="mobileMenu = false">X</h3>
         </div>
         <div class="mobile-link" @click="mobileMenu = false">
-          <router-link to="/">Ana Sayfa</router-link>
+          <router-link to="/">AnaSayfa</router-link>
         </div>
         <div class="mobile-link" @click="mobileMenu = false">
-          <router-link to="/one-shot">Hakkında</router-link>
+          <router-link to="/one-shot">OneShot</router-link>
         </div>
         <div class="mobile-link" @click="mobileMenu = false">
           <router-link to="/turnuvalar/1">Yurt İçi Turnuvalar</router-link>
@@ -162,6 +186,9 @@
         </div>
         <div class="mobile-link" @click="mobileMenu = false">
           <router-link to="/iletisim">İletişim</router-link>
+        </div>
+        <div class="mobile-link" @click="mobileMenu = false">
+          <a @click="girisModal" href="javascript:void(0)">Giriş</a>
         </div>
         <!--div class="mobile-link" @click="mobileMenu = false">
           <a href="javascript()" data-toggle="modal" data-target="#tg-login">Giriş</a>
@@ -197,6 +224,9 @@ export default {
         .then((res) => {
           this.ilt = res.data.data.record;
         });
+    },
+    girisModal() {
+      this.$store.commit("setLogin", true);
     },
   },
 };
