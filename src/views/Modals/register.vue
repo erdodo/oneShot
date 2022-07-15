@@ -1,56 +1,77 @@
 <template>
-  <div class="tg-modalbox modal fade" id="tg-register" tabindex="-1" role="dialog">
-		<div class="modal-dialog" role="document">
-			<div class="tg-modal-content">
-				<div class="tg-formarea">
-					<div class="tg-border-heading">
-						<h3>Signup</h3>
-					</div>
-					<form class="tg-loginform" method="post">
-						<fieldset>
-							<div class="form-group">
-								<input type="text" name="userName" class="form-control" placeholder="username">
-							</div>
-							<div class="form-group">
-								<input type="email" name="email" class="form-control" placeholder="email">
-							</div>
-							<div class="form-group">
-								<div class="tg-note">
-									<i class="fa fa-exclamation-circle"></i>
-									<span>We will email you your password.</span>
-								</div>
-							</div>
-							<div class="form-group">
-								<button class="tg-btn tg-btn-lg" type="submit">Login Now</button>
-							</div>
-							<div class="tg-description">
-								<p>Already have an account? <a href="#">Login</a></p>
-							</div>
-						</fieldset>
-					</form>
-				</div>
-				<div class="tg-logintype">
-					<div class="tg-border-heading">
-						<h3>Signup with</h3>
-					</div>
-					<ul>
-						<li class="tg-facebook"><a href="#">facebook</a></li>
-						<li class="tg-twitter"><a href="#">twitter</a></li>
-						<li class="tg-googleplus"><a href="#">google+</a></li>
-						<li class="tg-linkedin"><a href="#">linkedin</a></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
+  <div
+    class=""
+    :class="popupState ? 'show in fade tg-modalbox modal' : 'd-none'"
+    id="tg-login"
+    tabindex="-1"
+    role="dialog"
+    @click="modalClick()"
+  >
+    <div class="d-flex justify-content-center align-items-center" style="padding: 50px">
+      <img
+        @click="imgClick = true"
+        v-if="popup?.[0] != undefined"
+        :src="getImage(popup?.[0].image)"
+        style="max-height: 90vh; max-width: 90vw"
+      />
+    </div>
+  </div>
 </template>
 
 <script>
+import axios from "axios";
 export default {
+  data() {
+    return {
+      data: {},
+      popupState: false,
+      imgClick: false,
+    };
+  },
+  created() {
+    this.getPopup();
+  },
+  methods: {
+    getPopup() {
+      axios
+        .post("public/tables/popup", {
+          params: JSON.stringify({
+            page: 1,
+            limit: "10",
+            column_array_id: "0",
+            column_array_id_query: "0",
+            sorts: {},
+            filters: {},
+          }),
+        })
+        .then((res) => {
+          this.popup = res.data.data.records;
 
-}
+          this.popupState = res.data.data.all_records_count > 0;
+        });
+    },
+    getImage(img) {
+      if (img == undefined || img == "[]") {
+        return null;
+      } else {
+        return (
+          this.imgUrl +
+          JSON.parse(img)[0].destination_path +
+          "/b_" +
+          JSON.parse(img)[0].file_name
+        );
+      }
+    },
+    modalClick() {
+      if (this.imgClick == false) {
+        this.popupState = false;
+      } else {
+        window.open(this.popup?.[0].url);
+      }
+      this.imgClick = false;
+    },
+  },
+};
 </script>
 
-<style>
-
-</style>
+<style></style>

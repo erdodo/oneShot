@@ -11,13 +11,7 @@
       style="left: 0"
       role="document"
     >
-      <div class="tg-modal-content" style="width: 350px; height: 60vh">
-        <iframe
-          src="https://54.220.221.143/#/login"
-          class="h-100"
-          frameborder="0"
-        ></iframe>
-      </div>
+      <div class="tg-modal-content" style="width: 350px; height: 60vh"></div>
     </div>
   </div>
 </template>
