@@ -4,14 +4,8 @@
       <img :src="baseUrl + '_assets/images/bg-pattran.png'" alt="image desctription" />
     </div>
     <div class="slider p-5">
-      <vueper-slides ref="myVueperSlides" autoplay class="no-shadow">
-        <vueper-slide
-          v-for="(slide, i) in slider"
-          :key="i"
-          :image="getImage(slide.images)"
-          :title="parallaxFixedContent ? slide.title : ''"
-          :content="parallaxFixedContent ? slide.description : ''"
-        />
+      <vueper-slides autoplay class="no-shadow">
+        <vueper-slide v-for="(slide, i) in slider" :key="i" :image="getImage(slide.images)" />
       </vueper-slides>
     </div>
   </div>
@@ -26,8 +20,6 @@ export default {
     return {
       baseUrl: process.env.BASE_URL,
       slider: [],
-      parallax: 1,
-      parallaxFixedContent: false,
     };
   },
   mounted() {
@@ -57,7 +49,7 @@ export default {
         return (
           this.imgUrl +
           JSON.parse(img)[0].destination_path +
-          "" +
+          "b_" +
           JSON.parse(img)[0].file_name
         );
       }
@@ -74,6 +66,7 @@ export default {
   width: 100%;
   height: 100%;
 }
+
 .vueperslides__parallax-wrapper {
   height: 65vh;
 

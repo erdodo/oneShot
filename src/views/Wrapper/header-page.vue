@@ -52,6 +52,9 @@
                     <i class="fa fa-phone"></i>
                   </a>
                 </li>
+                <li>
+                  <a class="cursor-pointer" @click="openLogin()">Giriş</a>
+                </li>
               </ul>
             </div>
 
@@ -79,9 +82,9 @@
                     <li>
                       <router-link to="/one-shot">OneShot</router-link>
                     </li>
-                    <li>
-                      <a @click="orgMenuState = !orgMenuState">Organizasyonlar</a>
-                      <div v-if="orgMenuState == true" class="org-menu">
+                    <li class="mega-menu">
+                      <a>Organizasyonlar</a>
+                      <div class="org-menu">
                         <div class="d-flex justify-content-center text-center text-white">
                           <div class="m-2">
                             <router-link to="/turnuvalar/1">
@@ -242,7 +245,7 @@ export default {
           this.ilt = res.data.data.record;
         });
     },
-    girisModal() {
+    openLogin() {
       this.$store.commit("setLogin", true);
     },
   },
@@ -296,7 +299,12 @@ export default {
   width: 90px;
 }
 
+.mega-menu:hover .org-menu {
+  display: block;
+}
+
 .org-menu {
+  display: none;
   position: absolute;
   top: 50px;
   border: 1px solid rgb(124, 124, 124);
