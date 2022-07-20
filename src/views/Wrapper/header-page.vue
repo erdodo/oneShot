@@ -5,12 +5,9 @@
         <div class="">
           <div class="row">
             <div class="tg-colhalf pull-right">
-              <h4
-                class="text-white"
-                style="font-family: 'Caveat', cursive; text-transform: none"
-              >
+              <h3 class="text-white m-0 p-0" style="font-family: 'Caveat', cursive; text-transform: none">
                 "Hayallerinize Çok Uzak Değilsiniz"
-              </h4>
+              </h3>
             </div>
             <!--div class="tg-colhalf pull-right">
               <nav class="tg-addnav">
@@ -60,24 +57,16 @@
 
             <nav id="tg-nav" class="tg-nav brand-center">
               <div class="navbar-header">
-                <button
-                  type="button"
-                  class="navbar-toggle collapsed"
-                  data-toggle="collapse"
-                  data-target="#tg-navigationm-mobile"
-                >
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                  data-target="#tg-navigationm-mobile">
                   <i class="fa fa-bars"></i>
                 </button>
                 <strong class="tg-logo">
-                  <a
-                    href="/"
-                    style="
+                  <a href="/" style="
                       background: rgba(255, 255, 255, 0.5);
                       border-radius: 50%;
                       padding: 15px;
-                    "
-                    ><img src="@/assets/one-shot.png" alt="image description"
-                  /></a>
+                    "><img src="@/assets/one-shot.png" alt="image description" /></a>
                 </strong>
               </div>
               <div id="tg-navigation" class="tg-navigation">
@@ -91,21 +80,50 @@
                       <router-link to="/one-shot">OneShot</router-link>
                     </li>
                     <li>
-                      <router-link to="/turnuvalar/1"
-                        >Turnuvalar <a style="font-size: 10px">Yurt İçi </a></router-link
-                      >
+                      <a @click="orgMenuState = !orgMenuState">Organizasyonlar</a>
+                      <div v-if="orgMenuState == true" class="org-menu">
+                        <div class="d-flex justify-content-center text-center text-white">
+                          <div class="m-2">
+                            <router-link to="/turnuvalar/1">
+                              <img class="m-2" src="@/assets/yurt-ici.jpg" style="width:150px; height:90px;" alt="">
+                              <div class="mx-3">
+                                <a>Yurtiçi Turnuvalar</a>
+                              </div>
+                            </router-link>
+
+                          </div>
+                          <div class="m-2">
+                            <router-link to="/turnuvalar/2">
+                              <img class="m-2" src="@/assets/hali-saha.jpg" style="width:150px; height:90px;" alt="">
+                              <div class="mx-5">
+                                <a>HALISAHA LİGLERİ</a>
+                              </div>
+                            </router-link>
+
+                          </div>
+                          <div class="m-2">
+                            <router-link to="/turnuvalar/3">
+                              <img class="m-2" src="@/assets/yurt-disi.jpg" style="width:150px; height:90px;" alt="">
+                              <div class="">
+                                <a class="">YURTDIŞI Organizasyonlar</a>
+                              </div>
+                            </router-link>
+
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <!--li>
+                      <router-link to="/turnuvalar/1">Turnuvalar <a style="font-size: 10px">Yurt İçi </a></router-link>
                     </li>
                     <li>
-                      <router-link to="/turnuvalar/3"
-                        >Organizasyonlar
-                        <a style="font-size: 10px">Yurt Dışı </a></router-link
-                      >
+                      <router-link to="/turnuvalar/3">Organizasyonlar
+                        <a style="font-size: 10px">Yurt Dışı </a>
+                      </router-link>
                     </li>
                     <li>
-                      <router-link to="/turnuvalar/2"
-                        >Ligler <a style="font-size: 10px">Halı Saha </a></router-link
-                      >
-                    </li>
+                      <router-link to="/turnuvalar/2">Ligler <a style="font-size: 10px">Halı Saha </a></router-link>
+                    </li-->
                   </ul>
                 </div>
                 <div class="tg-colhalf">
@@ -139,16 +157,10 @@
         </div>
       </div>
     </header>
-    <div
-      class="mobile-header-collapse d-flex justify-content-between align-items-center w-100 d-md-none"
-      style="background: rgba(255, 255, 255, 0.6)"
-    >
-      <button
-        type="button"
-        class="tg-btn px-4 rounded m-4"
-        style="height: min-content"
-        @click="mobileMenu = !mobileMenu"
-      >
+    <div class="mobile-header-collapse d-flex justify-content-between align-items-center w-100 d-md-none"
+      style="background: rgba(255, 255, 255, 0.6)">
+      <button type="button" class="tg-btn px-4 rounded m-4" style="height: min-content"
+        @click="mobileMenu = !mobileMenu">
         <i class="fa fa-bars"></i>
       </button>
       <div>
@@ -214,6 +226,7 @@ export default {
       turnuva_kategorileri: [],
       mobileMenu: false,
       ilt: {},
+      orgMenuState: false
     };
   },
   created() {
@@ -241,10 +254,12 @@ export default {
   position: absolute;
   z-index: 20;
 }
+
 .mobile-header-collapse .collapse {
   position: absolute;
   z-index: 3;
 }
+
 .mobile-menu {
   position: fixed;
   top: 0;
@@ -254,25 +269,39 @@ export default {
   padding-top: 30px;
   background: rgba(0, 0, 0, 0.7);
 }
+
 .mobile-link {
   background: rgb(115, 12, 43, 0.8);
   padding: 10px;
   border-radius: 7px;
   margin: 15px;
   height: min-content;
-  font-size: 18px;
+  font: 16px/16px'Oswald', Arial, Helvetica, sans-serif;
   cursor: pointer;
 }
+
 .mobile-link a {
   color: white;
 }
+
 .mobile-link:hover a {
   color: rgb(223, 31, 36);
 }
+
 .tg-header a {
   font-weight: 500;
 }
+
 .mobile-logo {
   width: 90px;
+}
+
+.org-menu {
+  position: absolute;
+  top: 50px;
+  border: 1px solid rgb(124, 124, 124);
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.47);
+  border-radius: 5px;
 }
 </style>

@@ -26,8 +26,12 @@ export default {
 </script>
 <style>
 * {
-  font-family: oswald Oswald, Arial, Helvetica, sans-serif;
+  font-family: 'Oswald',
+    Arial,
+    Helvetica,
+    sans-serif;
 }
+
 .ellipsis-4 {
   display: -webkit-box;
   max-width: 200px;
